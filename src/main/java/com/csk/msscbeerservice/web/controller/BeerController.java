@@ -3,6 +3,7 @@ package com.csk.msscbeerservice.web.controller;
 import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1")
 public class BeerController {
-	
+
 	private static final int DEFAULT_PAGE_NUMBER = 0;
 	private static final int DEFAULT_PAGE_SIZE = 25;
 
@@ -37,20 +38,21 @@ public class BeerController {
 
 		return new ResponseEntity<BeerDto>(beerService.getById(beerId, showInventoryOnHand), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/beerUpc/{upc}")
 	public ResponseEntity<BeerDto> getBeerByUpc(@PathVariable("upc") String upc) {
-		
+
 		return new ResponseEntity<BeerDto>(beerService.getByUpc(upc), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/beer")
-	public ResponseEntity<BeerPagedList> getBeers(@RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
-												  @RequestParam(value = "pageSize", defaultValue = "25", required = false) int pageSize,
-												  @RequestParam(value = "beerName", required = false) String beerName,
-												  @RequestParam(value = "beerStyle", required = false) String beerStyle,
-												  @RequestParam(value = "showInventoryOnHand", required = false, defaultValue = "false") boolean showInventoryOnHand) {
-		
+	public ResponseEntity<BeerPagedList> getBeers(
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "25", required = false) int pageSize,
+			@RequestParam(value = "beerName", required = false) String beerName,
+			@RequestParam(value = "beerStyle", required = false) String beerStyle,
+			@RequestParam(value = "showInventoryOnHand", required = false, defaultValue = "false") boolean showInventoryOnHand) {
+
 		if (pageNumber < 0) {
 			pageNumber = DEFAULT_PAGE_NUMBER;
 		}
@@ -58,8 +60,9 @@ public class BeerController {
 			pageSize = DEFAULT_PAGE_SIZE;
 		}
 		@SuppressWarnings("deprecation")
-		PageRequest pageRequest = new PageRequest(pageNumber, pageSize);
-		return new ResponseEntity<BeerPagedList>(beerService.listBeers(beerName, beerStyle, pageRequest, showInventoryOnHand), HttpStatus.OK);
+		PageRequest pageRequest = PageRequest.of(Integer.valueOf(pageNumber), Integer.valueOf(pageSize));
+		return new ResponseEntity<BeerPagedList>(
+				beerService.listBeers(beerName, beerStyle, pageRequest, showInventoryOnHand), HttpStatus.OK);
 	}
 
 	@PostMapping("/beer")
