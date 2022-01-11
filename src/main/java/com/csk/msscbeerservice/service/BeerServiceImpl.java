@@ -13,8 +13,8 @@ import com.csk.msscbeerservice.domain.Beer;
 import com.csk.msscbeerservice.exception.NotFoundException;
 import com.csk.msscbeerservice.repository.BeerRepository;
 import com.csk.msscbeerservice.web.mapper.BeerMapper;
-import com.csk.msscbeerservice.web.model.BeerDto;
-import com.csk.msscbeerservice.web.model.BeerPagedList;
+import com.csk.brewery.model.BeerDto;
+import com.csk.brewery.model.BeerPagedList;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

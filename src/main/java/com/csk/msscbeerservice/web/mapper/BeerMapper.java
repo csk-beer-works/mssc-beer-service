@@ -4,7 +4,7 @@ import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 
 import com.csk.msscbeerservice.domain.Beer;
-import com.csk.msscbeerservice.web.model.BeerDto;
+import com.csk.brewery.model.BeerDto;
 
 @Mapper(uses = {DateMapper.class})
 @DecoratedWith(BeerMapperDecorator.class)

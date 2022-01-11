@@ -1,4 +1,4 @@
-package com.csk.msscbeerservice.web.model;
+package com.csk.brewery.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;

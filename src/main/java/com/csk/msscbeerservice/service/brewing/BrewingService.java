@@ -1,7 +1,8 @@
-package com.csk.msscbeerservice.service;
+package com.csk.msscbeerservice.service.brewing;
 
 import java.util.List;
 
+import com.csk.msscbeerservice.config.JmsConfig;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -25,18 +26,20 @@ public class BrewingService {
 	private final JmsTemplate jmsTemplate;
 	private final BeerMapper mapper;
 	
-	@Scheduled(fixedDelay = 5000) // every 5 seconds
+	@Scheduled(fixedDelay = 60000) // every 5 seconds
 	public void checkForLowInventory() {
+		log.info("Fetching Beers from Repository........");
 		List<Beer> beers =  beerRepository.findAll();
 		
 		beers.forEach(beer -> {
 			int beerQOH = beerInventoryService.getOnhandInventory(beer.getId());
 			
-			log.debug("Min OnHand is {}", beer.getMinOnHand());
-			log.debug("Inventory is {}", beerQOH);
+			log.info("Min OnHand is {}", beer.getMinOnHand());
+			log.info("Inventory is {}", beerQOH);
 			
 			if (beer.getMinOnHand() >= beerQOH) {
-				jmsTemplate.convertAndSend("brewing-request", new BrewBeerEvent(mapper.beerToBeerDto(beer)));
+				jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE,
+						new BrewBeerEvent(mapper.beerToBeerDto(beer)));
 			}
 		});
 	}

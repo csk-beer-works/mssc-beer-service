@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.csk.msscbeerservice.domain.Beer;
 import com.csk.msscbeerservice.service.inventory.BeerInventoryService;
-import com.csk.msscbeerservice.web.model.BeerDto;
+import com.csk.brewery.model.BeerDto;
 
 import lombok.extern.slf4j.Slf4j;
 

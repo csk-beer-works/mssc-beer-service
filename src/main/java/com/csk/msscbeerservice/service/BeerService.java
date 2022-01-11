@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
 
-import com.csk.msscbeerservice.web.model.BeerDto;
-import com.csk.msscbeerservice.web.model.BeerPagedList;
+import com.csk.brewery.model.BeerDto;
+import com.csk.brewery.model.BeerPagedList;
 
 public interface BeerService {
 	

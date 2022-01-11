@@ -3,7 +3,6 @@ package com.csk.msscbeerservice.web.controller;
 import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csk.msscbeerservice.service.BeerService;
-import com.csk.msscbeerservice.web.model.BeerDto;
-import com.csk.msscbeerservice.web.model.BeerPagedList;
+import com.csk.brewery.model.BeerDto;
+import com.csk.brewery.model.BeerPagedList;
 
 import lombok.RequiredArgsConstructor;
 

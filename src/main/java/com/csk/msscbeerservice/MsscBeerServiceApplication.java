@@ -24,7 +24,7 @@ public class MsscBeerServiceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-	/*	Beer beer = null;
+		/*Beer beer = null;
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		String beerName1 = "Mango Bobs";
 		String beerName2 = "Galaxy Cat";
@@ -47,7 +47,7 @@ public class MsscBeerServiceApplication implements CommandLineRunner {
 		beerRepository.save(beer);
 		
 		beer = new Beer(beerName3, type3, timestamp, timestamp, upc3, price, 12, 200, 1l);
-		beerRepository.save(beer);   */
+		beerRepository.save(beer);*/
 		
 		
 	}

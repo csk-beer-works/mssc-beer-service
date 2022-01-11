@@ -1,6 +1,6 @@
-package com.csk.msscbeerservice.events;
+package com.csk.brewery.model.events;
 
-import com.csk.msscbeerservice.web.model.BeerDto;
+import com.csk.brewery.model.BeerDto;
 
 public class NewInventoryEvent extends BeerEvent {
 
